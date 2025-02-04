@@ -62,7 +62,6 @@ export async function POST(req: Request) {
         email: user.email_addresses[0].email_address,
         imageUrl: user.image_url,
       });
-      console.log("User saved to database.");
     } catch (dbError) {
       console.error("Error inserting user record into DB:", dbError);
       return new Response("Database insertion error", { status: 500 });

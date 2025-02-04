@@ -2,7 +2,14 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Book, Layout, Plus, Command, User } from "lucide-react";
+import {
+  Plus,
+  Command,
+  Monitor,
+  UserCircle,
+  Server,
+  LayoutDashboard,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sidebar,
@@ -65,9 +72,27 @@ export function MainSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               {[
-                { href: "/dashboard", icon: Book, label: "Dashboard" },
-                { href: "/adminpage", icon: Layout, label: "Admin" },
-                { href: "/user-profile", icon: User, label: "User Profile" },
+                {
+                  href: "/dashboard",
+                  icon: LayoutDashboard,
+                  label: "Dashboard",
+                },
+                {
+                  href: "/clientsiderender",
+                  icon: Monitor,
+                  label: "Client Side Render",
+                },
+
+                {
+                  href: "/serversiderender",
+                  icon: Server,
+                  label: "Server Side Render",
+                },
+                {
+                  href: "/user-profile",
+                  icon: UserCircle,
+                  label: "User Profile",
+                },
               ].map((item) => (
                 <SidebarMenuItem key={item.href}>
                   <Tooltip>

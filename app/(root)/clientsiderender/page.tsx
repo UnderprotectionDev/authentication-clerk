@@ -12,7 +12,6 @@ const AdminPage = () => {
   }
   return (
     <>
-      <div>AdminPage</div>
       <div className="text-2xl flex flex-col items-center justify-center">
         <div>
           {user?.firstName} {user?.lastName}
