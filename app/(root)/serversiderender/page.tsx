@@ -5,7 +5,7 @@ const Dashboard = async () => {
 
   return (
     <>
-      <div className="text-2xl flex flex-col items-center justify-center">
+      <div className="text-2xl flex flex-col items-center justify-center min-h-screen w-screen">
         <div>
           {user?.firstName} {user?.lastName}
         </div>

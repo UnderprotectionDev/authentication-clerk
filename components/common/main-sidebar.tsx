@@ -53,7 +53,7 @@ export function MainSidebar() {
             <div className="flex items-center w-full justify-between">
               <div className="flex items-center">
                 <Command className="h-6 w-6 mr-2 text-primary" />
-                <span className="font-bold text-lg">AI Chat</span>
+                <span className="font-bold text-lg">Clerk Authentication</span>
               </div>
               <SidebarTrigger className="h-7 w-7 flex-shrink-0" />
             </div>
