@@ -67,7 +67,7 @@ export function MainSidebar() {
               {[
                 { href: "/dashboard", icon: Book, label: "Dashboard" },
                 { href: "/adminpage", icon: Layout, label: "Admin" },
-                { href: "/userprofile", icon: User, label: "User Profile" },
+                { href: "/user-profile", icon: User, label: "User Profile" },
               ].map((item) => (
                 <SidebarMenuItem key={item.href}>
                   <Tooltip>
