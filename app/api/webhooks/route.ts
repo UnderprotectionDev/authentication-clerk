@@ -1,6 +1,8 @@
 import { Webhook } from "svix";
 import { headers } from "next/headers";
 import { WebhookEvent } from "@clerk/nextjs/server";
+import { db } from "@/db";
+import { usersTable } from "@/db/schema";
 
 export async function POST(req: Request) {
   const SIGNING_SECRET = process.env.SIGNING_SECRET;
@@ -46,10 +48,26 @@ export async function POST(req: Request) {
       status: 400,
     });
   }
-  const { id } = evt.data;
   const eventType = evt.type;
-  console.log(`Received webhook with ID ${id} and event type of ${eventType}`);
-  console.log("Webhook payload:", body);
+
+  if (eventType === "user.created") {
+    const user = evt.data;
+    const clerkId = user.id;
+
+    try {
+      await db.insert(usersTable).values({
+        clerkId: clerkId,
+        fullName: user.first_name,
+        username: user.username || "",
+        email: user.email_addresses[0].email_address,
+        imageUrl: user.image_url,
+      });
+      console.log("User saved to database.");
+    } catch (dbError) {
+      console.error("Error inserting user record into DB:", dbError);
+      return new Response("Database insertion error", { status: 500 });
+    }
+  }
 
   return new Response("Webhook received", { status: 200 });
 }
